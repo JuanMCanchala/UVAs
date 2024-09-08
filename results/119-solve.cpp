@@ -14,17 +14,20 @@ struct Amigo
     int dinero;
 };
 
-int main()
-{
+int main(){
     int casos, dinero, quienes, division, modulo;
     string entrada, repartidor, nombresreciben;
 
-    while (cin >> casos)
-    {
+    bool primera = true;  // Usamos una bandera para controlar el salto de línea entre casos
+    while (cin >> casos){
+        if (!primera) {
+            cout << endl;  // Solo imprimimos el salto de línea entre casos
+        }
+        primera = false;
+
         vector<Amigo> amigos;
 
-        for (int i = 0; i < casos; i++)
-        {
+        for (int i = 0; i < casos; i++){
             cin >> entrada;
             Amigo estructura;
             estructura.amigo = entrada;
@@ -32,32 +35,25 @@ int main()
             amigos.push_back(estructura);
         }
 
-        for (int j = 0; j < casos; j++)
-        {
+        for (int j = 0; j < casos; j++){
             cin >> repartidor >> dinero >> quienes;
 
-            if (quienes != 0)
-            {
+            if (quienes != 0){
                 division = dinero / quienes;
                 modulo = dinero % quienes;
 
                 // Encuentra al amigo que reparte el dinero
-                for (int a = 0; a < casos; a++)
-                {
-                    if (amigos[a].amigo == repartidor)
-                    {
+                for (int a = 0; a < casos; a++){
+                    if (amigos[a].amigo == repartidor){
                         amigos[a].dinero -= dinero;
                         amigos[a].dinero += modulo;
                     }
                 }
 
-                for (int a = 0; a < quienes; a++)
-                {
+                for (int a = 0; a < quienes; a++){
                     cin >> nombresreciben;
-                    for (int b = 0; b < casos; b++)
-                    {
-                        if (amigos[b].amigo == nombresreciben)
-                        {
+                    for (int b = 0; b < casos; b++){
+                        if (amigos[b].amigo == nombresreciben){
                             amigos[b].dinero += division;
                         }
                     }
@@ -65,11 +61,9 @@ int main()
             }
         }
 
-        for (int r = 0; r < casos; r++)
-        {
+        for (int r = 0; r < casos; r++){
             cout << amigos[r].amigo << " " << amigos[r].dinero << endl;
         }
-            cout << endl;
     }
 
     return 0;
