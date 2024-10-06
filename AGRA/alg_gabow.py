@@ -25,7 +25,7 @@ def gabowAux(v):
     pilaP.append(v)
 
     for i in range(len(adj[v])):
-        w = adj[v][i];
+        w = adj[v][i]
         if visitado[w] == -1:
             gabowAux(w)
         elif sccInd[w] == -1:

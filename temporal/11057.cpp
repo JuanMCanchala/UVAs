@@ -27,11 +27,9 @@ n[l] = pareja.firstnum;
 n[h] = pareja.secondnum;
 l += 1;
 h -= 1;
-}
-else if(n[l] + n[h] > total){
+} else if(n[l] + n[h] > total){
 h -=1;
-}
-else if(n[l] + n[h] < total){
+} else if(n[l] + n[h] < total){
 l += 1;
 }
 }
